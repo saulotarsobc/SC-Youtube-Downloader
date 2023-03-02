@@ -2,7 +2,12 @@
   "name": "youtube-downloader-sc",
   "version": "1.0.0",
   "description": "App feito com Electron para baixar videos individuais ou playlists do youtube em vários formatos",
+  "icon": "./build/icon.png",
   "main": "main.js",
+  "build": {
+    "productName": "SC Youtube Downloader",
+    "appId": "saulotarsobc.sc.youtube.downloader"
+  },
   "scripts": {
     "start-debug": "electron .  --trace-warnings > ./app-run.log  2>&1",
     "start": "electron .",
@@ -21,6 +26,10 @@
   "author": "Saulo Costa",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^23.1.1"
+    "electron": "21.4.1",
+    "electron-builder": "^23.6.0"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.9"
   }
 }
