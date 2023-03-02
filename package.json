@@ -1,0 +1,26 @@
+{
+  "name": "youtube-downloader-sc",
+  "version": "1.0.0",
+  "description": "App feito com Electron para baixar videos individuais ou playlists do youtube em vários formatos",
+  "main": "main.js",
+  "scripts": {
+    "start-debug": "electron .  --trace-warnings > ./app-run.log  2>&1",
+    "start": "electron .",
+    "pack-win": "electron-builder --win",
+    "pack-win-test": "electron-builder --dir --win",
+    "pack-linux-test": "electron-builder --dir --linux",
+    "pack-linux": "electron-builder --linux",
+    "pack-mac": "electron-builder --mac",
+    "publish": "electron-builder --win -p always",
+    "publish-linux": "electron-builder --linux -p always",
+    "postinstall": "electron-builder install-app-deps",
+    "release": "electron-builder",
+    "sass": "sass -w src/views/scss/main.scss src/views/css/main.min.css -s compressed"
+  },
+  "keywords": [],
+  "author": "Saulo Costa",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^23.1.1"
+  }
+}
