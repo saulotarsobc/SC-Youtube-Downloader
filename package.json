@@ -20,13 +20,13 @@
     "publish-linux": "electron-builder --linux -p always",
     "postinstall": "electron-builder install-app-deps",
     "release": "electron-builder",
-    "sass": "sass -w src/views/scss/main.scss src/views/css/main.min.css -s compressed"
+    "sass": "sass -w scss/main.scss css/main.min.css -s compressed"
   },
   "keywords": [],
   "author": "Saulo Costa",
   "license": "ISC",
   "devDependencies": {
-    "electron": "21.4.1",
+    "electron": "^21.4.1",
     "electron-builder": "^23.6.0"
   },
   "dependencies": {
