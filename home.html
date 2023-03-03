@@ -1,16 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-    <link href="./styles.css" rel="stylesheet">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Home!</h1>
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./js/home.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"> -->
+  <link href="./css/main.min.css" rel="stylesheet">
+  <title></title>
+</head>
+
+<body>
+
+  <div id="home">
+    <div id="wrap">
+      <div class="inputG">
+        <label for="url">URL:</label>
+        <input type="text" id="url" name="url" value="https://youtu.be/hWr2aLucrgk">
+      </div>
+
+      <div class="inputG">
+        <input type="button" value="BUSCAR" id="buscar" name="buscar">
+      </div>
+
+      <hr style="margin: 10px 0;">
+
+      <div class="inputG">
+        <img id="thumb" src="https://i.ytimg.com/vi/hWr2aLucrgk/maxresdefault.jpg" alt="thumb">
+      </div>
+
+
+      <div class="inputG">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" value="">
+      </div>
+
+      <div class="inputG">
+        <label for="description">Descição:</label>
+        <textarea id="description" name="description" value="" rows="6"></textarea>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- You can also require other files to run in this process -->
+  <script src="./js/home.js"></script>
+</body>
+
 </html>

@@ -1,14 +1,14 @@
 const { app, BrowserWindow } = require("electron");
-const remoteMain = require("@electron/remote/main");
+const fs = require('fs');
+const ytdl = require('ytdl-core');
 
 let win;
-remoteMain.initialize();
 
 function createWindows() {
     /* main window */
     win = new BrowserWindow({
-        height: 500,
-        width: 450,
+        // height: 500,
+        // width: 450,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -17,8 +17,8 @@ function createWindows() {
     });
     win.loadFile("./home.html");
     win.setTitle("SC Youtube Downloader - v1.0.0");
-    win.setPosition(50, 50);
-    remoteMain.enable(win.webContents);
+    // win.setTitle(`${require('./package.json').build.productName} - v${require('./package.json').version}`);
+    // win.setPosition(50, 50);
     win.webContents.openDevTools();
 }
 

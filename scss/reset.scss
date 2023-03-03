@@ -1,0 +1,16 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    &:focus{
+        border: none;
+        text-decoration: none;
+    }
+}
+
+body{
+    background-color: gainsboro;
+}

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "App feito com Electron para baixar videos individuais ou playlists do youtube em vários formatos",
   "icon": "./build/icon.png",
-  "main": "main.js",
+  "main": "./main.js",
   "build": {
     "productName": "SC Youtube Downloader",
     "appId": "saulotarsobc.sc.youtube.downloader"
@@ -11,25 +11,30 @@
   "scripts": {
     "start-debug": "electron .  --trace-warnings > ./app-run.log  2>&1",
     "start": "electron .",
-    "pack-win": "electron-builder --win",
-    "pack-win-test": "electron-builder --dir --win",
-    "pack-linux-test": "electron-builder --dir --linux",
-    "pack-linux": "electron-builder --linux",
-    "pack-mac": "electron-builder --mac",
+    "win": "electron-builder --win",
+    "win-test": "electron-builder --dir --win",
+    "linux": "electron-builder --linux",
+    "linux-test": "electron-builder --dir --linux",
+    "mac": "electron-builder --mac",
     "publish": "electron-builder --win -p always",
     "publish-linux": "electron-builder --linux -p always",
     "postinstall": "electron-builder install-app-deps",
     "release": "electron-builder",
     "sass": "sass -w scss/main.scss css/main.min.css -s compressed"
   },
-  "keywords": [],
-  "author": "Saulo Costa",
+  "keywords": [
+    "youtube",
+    "downloader",
+    "saulo costa"
+  ],
+  "author": "https://github.com/saulotarsobc/",
   "license": "ISC",
+  "repository": "https://github.com/saulotarsobc/youtube-downloader.git",
   "devDependencies": {
-    "electron": "^21.4.1",
+    "electron": "^23.1.1",
     "electron-builder": "^23.6.0"
   },
   "dependencies": {
-    "@electron/remote": "^2.0.9"
+    "ytdl-core": "^4.11.2"
   }
 }
