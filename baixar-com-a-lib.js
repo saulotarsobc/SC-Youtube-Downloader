@@ -1,7 +1,7 @@
 const ytdl = require('ytdl-core');
 const fs = require('fs');
 
-const videoUrl = "https://youtu.be/29bWdogk2tA";
+const videoUrl = "https://youtu.be/hsZVlDQEwnI";
 
 setTimeout(async () => {
     const videoInfo = await ytdl.getInfo(videoUrl);
