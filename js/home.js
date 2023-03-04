@@ -50,15 +50,10 @@ async function renderFormts() {
     console.log(videoFormats);
 
     formats.innerHTML = "";
-    // await videoFormats.map((format, index) => {
-    //     formats.innerHTML += `<div class="format" data-index=${index}>
-    //         <div style="background:red">${index}</div>
-    //         <pre>${JSON.stringify(format, null, 2)}</pre>
-    //     </div>`;
-    //     console.log(index);
-    // });
-    await videoFormats.map(({ qualityLabel, mimeType, container,codecs }, index) => {
+
+    await videoFormats.map(({ qualityLabel, mimeType, container, codecs }, index) => {
         formats.innerHTML += `<div class="format" data-index=${index}>
+            <div class="indexValue">Index: ${index}</div>    
             <div>Qualidade: ${qualityLabel}</div>
             <div>Formato: ${container}</div>
             <div>Mine: ${mimeType}</div>
@@ -69,7 +64,7 @@ async function renderFormts() {
     document.querySelectorAll('.format').forEach(format => {
         format.addEventListener('click', () => {
             baixar(format.dataset.index);
-        })
+        });
     });
 };
 
