@@ -43,7 +43,7 @@ async function buscarVideo() {
     channel_sub.innerHTML = info.videoDetails.author.subscriber_count + ' inscritos<br>' + info.videoDetails.viewCount + ' visualizações';
 };
 
-buscarVideo();
+// buscarVideo();
 
 async function renderFormts() {
 
