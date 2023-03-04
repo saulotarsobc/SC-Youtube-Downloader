@@ -6,7 +6,7 @@
 
 ## FAQ
 
-### Por que o download com essa lib é tão lento?
+### Por que o download tá tão lento?
 
 > A velocidade de download ao usar a biblioteca `ytdl-core` pode variar dependendo de vários fatores, como a qualidade do vídeo selecionada, o tamanho do vídeo, a largura de banda da internet e a capacidade do processador do seu dispositivo.
 >
