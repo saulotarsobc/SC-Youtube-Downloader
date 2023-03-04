@@ -97,6 +97,7 @@ function clearAll() {
     description.value = "";
     channel_name.innerHTML = `<a href="https://github.com/saulotarsobc" target="_blank">Saulo Costa</a>`;
     channel_sub.innerHTML = "@saulotarsobc";
+    progresso.value = 0;
     mensagem.innerHTML = "Download não iniciado";
     formats.innerHTML = "";
 };
