@@ -50,17 +50,24 @@ async function renderFormts() {
     console.log(videoFormats);
 
     formats.innerHTML = "";
-    await videoFormats.map(({ qualityLabel, mimeType, container }, index) => {
+    // await videoFormats.map((format, index) => {
+    //     formats.innerHTML += `<div class="format" data-index=${index}>
+    //         <div style="background:red">${index}</div>
+    //         <pre>${JSON.stringify(format, null, 2)}</pre>
+    //     </div>`;
+    //     console.log(index);
+    // });
+    await videoFormats.map(({ qualityLabel, mimeType, container,codecs }, index) => {
         formats.innerHTML += `<div class="format" data-index=${index}>
             <div>Qualidade: ${qualityLabel}</div>
             <div>Formato: ${container}</div>
             <div>Mine: ${mimeType}</div>
+            <div>Codecs: ${codecs}</div>
         </div>`;
         console.log(index);
     });
     document.querySelectorAll('.format').forEach(format => {
-        format.addEventListener('click',()=>{
-            // console.log(format.dataset.index);
+        format.addEventListener('click', () => {
             baixar(format.dataset.index);
         })
     });
@@ -83,7 +90,7 @@ async function baixar(index) {
         progresso.value = progress.toFixed(2);
         mensagem.innerHTML = `Baixando... - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`;
     });
-    download.on('finish', () => {   
+    download.on('finish', () => {
         console.log(`Download do vídeo "${videoTitle}" concluído com sucesso!`);
         mensagem.innerHTML = "Download concluído";
     });
