@@ -12,6 +12,7 @@ const description = document.getElementById('description');
 const channel_thumb = document.getElementById('channel_thumb');
 const channel_name = document.getElementById('channel_name');
 const channel_sub = document.getElementById('channel_sub');
+const mensagem = document.getElementById('mensagem');
 const progresso = document.getElementById('progresso');
 /* html elements */
 
@@ -54,12 +55,14 @@ async function baixar() {
         const progress = (downloaded / total) * 100;
         const downloadedMB = downloaded / (1024 * 1024);
         const totalMB = total / (1024 * 1024);
-        console.log(`${(progress).toFixed(2)}% downloaded`);
+        console.log(`Baixando "${title}.${container}" - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`);
         progresso.value = progress.toFixed(2);
+        mensagem.innerHTML = `Baixando... - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`;
     });
 
     download.on('finish', () => {
         console.log(`Download do vídeo "${title}" concluído com sucesso!`);
+        mensagem.innerHTML = "Download concluído";
     });
 
     download.pipe(fs.createWriteStream(`${title}.${container}`));
@@ -73,6 +76,7 @@ function clearAll() {
     description.value = "";
     channel_name.innerHTML = `<a href="https://github.com/saulotarsobc" target="_blank">Saulo Costa</a>`;
     channel_sub.innerHTML = "@saulotarsobc";
+    mensagem.innerHTML = "Download não iniciado";
 };
 
 buscarVideo();
