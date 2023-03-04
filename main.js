@@ -1,13 +1,12 @@
 const { app, BrowserWindow } = require("electron");
-const fs = require('fs');
-const ytdl = require('ytdl-core');
+// const fs = require('fs');
 
 let win;
 
 function createWindows() {
     /* main window */
     win = new BrowserWindow({
-        // height: 500,
+        height: 500,
         // width: 450,
         webPreferences: {
             nodeIntegration: true,
@@ -19,7 +18,7 @@ function createWindows() {
     win.setTitle("SC Youtube Downloader - v1.0.0");
     // win.setTitle(`${require('./package.json').build.productName} - v${require('./package.json').version}`);
     // win.setPosition(50, 50);
-    win.webContents.openDevTools();
+    win.webContents.openDevTools(); 
 }
 
 app.whenReady().then(() => {

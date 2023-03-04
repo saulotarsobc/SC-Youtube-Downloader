@@ -12,6 +12,7 @@ const description = document.getElementById('description');
 const channel_thumb = document.getElementById('channel_thumb');
 const channel_name = document.getElementById('channel_name');
 const channel_sub = document.getElementById('channel_sub');
+const progresso = document.getElementById('progresso');
 /* html elements */
 
 buscar.addEventListener('click', async () => {
@@ -19,20 +20,14 @@ buscar.addEventListener('click', async () => {
 });
 
 let info = {};
-let audioFormats, videoFormats;
 
 async function buscarVideo() {
     clearAll();
+    console.log('bucando...');
 
     info = await ytdl.getInfo(url.value);
 
-    // const { formats } = info;
-    // console.log(formats);
-
-    const apenasVideos = ytdl.filterFormats(info.formats, {
-        hasAudio: true
-    });
-    console.log(apenasVideos);
+    // console.log(info);
 
     title.value = info.videoDetails.title;
     description.value = info.videoDetails.description;
@@ -40,7 +35,36 @@ async function buscarVideo() {
     channel_thumb.src = info.videoDetails.author.thumbnails.slice(-1)[0].url;
     channel_name.innerHTML = `<a href="${info.videoDetails.author.channel_url}" target="_blank">${info.videoDetails.author.name}</a>`;
     channel_sub.innerHTML = info.videoDetails.author.subscriber_count + ' inscritos<br>' + info.videoDetails.viewCount + ' visualizações';
+    baixar();
 };
+
+async function baixar() {
+    console.log(info);
+
+    const { formats } = info;
+
+    const { title } = info.videoDetails;
+    const format = formats[13];
+    const container = format.container
+
+    // Baixe o vídeo
+    const download = ytdl.downloadFromInfo(info, { format });
+
+    download.on('progress', (chunkLength, downloaded, total) => {
+        const progress = (downloaded / total) * 100;
+        const downloadedMB = downloaded / (1024 * 1024);
+        const totalMB = total / (1024 * 1024);
+        console.log(`${(progress).toFixed(2)}% downloaded`);
+        progresso.value = progress.toFixed(2);
+    });
+
+    download.on('finish', () => {
+        console.log(`Download do vídeo "${title}" concluído com sucesso!`);
+    });
+
+    download.pipe(fs.createWriteStream(`${title}.${container}`));
+};
+
 
 function clearAll() {
     thumb.src = "./image/nothing.png";
