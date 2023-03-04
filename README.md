@@ -16,4 +16,4 @@
 >
 > Se a velocidade de download estiver muito lenta, pode ser útil verificar a qualidade do vídeo selecionada e a velocidade da conexão à internet. Também pode ser útil experimentar outras bibliotecas de download de vídeo para comparar a velocidade de download.
 
-![1677869129533](image/README/1677869129533.png)![1677939778646](image/README/1677939778646.png)
+![1677939778646](image/README/1677939778646.png)
