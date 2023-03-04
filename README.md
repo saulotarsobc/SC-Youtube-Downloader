@@ -4,6 +4,8 @@
 
 > App feito com Electron para baixar videos individuais ou playlists do youtube em vários formatos
 
+![1677955137586](image/README/1677955137586.png)
+
 ## FAQ
 
 ### Por que o download tá tão lento?
@@ -15,5 +17,3 @@
 > Além disso, a velocidade de download pode ser afetada pelo uso de proxies, firewalls e outros dispositivos de rede que podem limitar a velocidade de conexão.
 >
 > Se a velocidade de download estiver muito lenta, pode ser útil verificar a qualidade do vídeo selecionada e a velocidade da conexão à internet. Também pode ser útil experimentar outras bibliotecas de download de vídeo para comparar a velocidade de download.
-
-![1677939778646](image/README/1677939778646.png)
