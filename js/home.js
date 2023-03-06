@@ -103,3 +103,5 @@ function clearAll() {
     mensagem.innerHTML = "Download não iniciado";
     formats.innerHTML = "";
 };
+
+console.log(__dirname);
