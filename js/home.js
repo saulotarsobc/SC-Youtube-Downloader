@@ -43,7 +43,7 @@ async function buscarVideo() {
     channel_sub.innerHTML = info.videoDetails.author.subscriber_count + ' inscritos<br>' + info.videoDetails.viewCount + ' visualizações';
 };
 
-// buscarVideo();
+buscarVideo();
 
 async function renderFormts() {
 
@@ -73,22 +73,30 @@ async function baixar(index) {
     const formatoEscolido = videoFormats[index];
     const { container } = formatoEscolido;
 
-    console.log(videoTitle);
-    console.log(formatoEscolido);
-
     const download = ytdl.downloadFromInfo(info, { formatoEscolido });
     download.on('progress', (chunkLength, downloaded, total) => {
+        /* progresso */
         const progress = (downloaded / total) * 100;
         const downloadedMB = downloaded / (1024 * 1024);
         const totalMB = total / (1024 * 1024);
-        console.log(`Baixando "${videoTitle}.${container}" - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`);
+        /* progresso */
+
+        /* velocidade */
+        console.log(chunkLength, downloaded, total);
+        /* velocidade */
+
+        /* exibir resultados */
         progresso.value = progress.toFixed(2);
         mensagem.innerHTML = `Baixando... - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`;
+        // console.log(`Baixando "${videoTitle}.${container}" - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`);
+        /* exibir resultados */
     });
+
     download.on('finish', () => {
         console.log(`Download do vídeo "${videoTitle}" concluído com sucesso!`);
         mensagem.innerHTML = "Download concluído";
     });
+
     download.pipe(fs.createWriteStream(`${videoTitle}.${container}`));
 };
 
