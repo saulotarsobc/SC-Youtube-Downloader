@@ -6,7 +6,7 @@ const ytdl = require('ytdl-core');
 /* html elements */
 const url = document.getElementById('url');
 const buscar = document.getElementById('buscar');
-const thumb = document.getElementById('thumb');
+// const thumb = document.getElementById('thumb');
 const title = document.getElementById('title');
 const description = document.getElementById('description');
 const channel_thumb = document.getElementById('channel_thumb');
@@ -15,6 +15,7 @@ const channel_sub = document.getElementById('channel_sub');
 const mensagem = document.getElementById('mensagem');
 const progresso = document.getElementById('progresso');
 const formats = document.getElementById('formats');
+const video_frame = document.getElementById('video_frame');
 /* html elements */
 
 buscar.addEventListener('click', async () => {
@@ -37,10 +38,12 @@ async function buscarVideo() {
 
     title.value = info.videoDetails.title;
     description.value = info.videoDetails.description;
-    thumb.src = info.videoDetails.thumbnails.slice(-1)[0].url;
+    // thumb.src = info.videoDetails.thumbnails.slice(-1)[0].url;
+    video_frame.src = info.videoDetails.embed.iframeUrl;
+    video_frame.height = 200;
     channel_thumb.src = info.videoDetails.author.thumbnails.slice(-1)[0].url;
     channel_name.innerHTML = `<a href="${info.videoDetails.author.channel_url}" target="_blank">${info.videoDetails.author.name}</a>`;
-    channel_sub.innerHTML = info.videoDetails.author.subscriber_count + ' inscritos<br>' + info.videoDetails.viewCount + ' visualizações';
+    channel_sub.innerHTML = 'Inscritos: ' + info.videoDetails.author.subscriber_count + '<br>Views: ' + info.videoDetails.viewCount;
 };
 
 buscarVideo();
@@ -59,7 +62,6 @@ async function renderFormts() {
             <div>Mine: ${mimeType}</div>
             <div>Codecs: ${codecs}</div>
         </div>`;
-        console.log(index);
     });
     document.querySelectorAll('.format').forEach(format => {
         format.addEventListener('click', () => {
@@ -101,7 +103,7 @@ async function baixar(index) {
 };
 
 function clearAll() {
-    thumb.src = "./image/nothing.png";
+    // thumb.src = "./image/nothing.png";
     channel_thumb.src = "./image/channel_thumb.jpeg";
     title.value = "";
     description.value = "";
@@ -110,6 +112,6 @@ function clearAll() {
     progresso.value = 0;
     mensagem.innerHTML = "Download não iniciado";
     formats.innerHTML = "";
+    video_frame.height = 0;
+    video_frame.src = "";
 };
-
-console.log(__dirname);

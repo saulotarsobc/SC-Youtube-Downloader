@@ -13,8 +13,13 @@
         padding: 5px;
     }
 
-    #thumb {
-        height: 130px;
+    // #thumb {
+    //     height: 130px;
+    //     border-radius: 5px;
+    // }
+
+    #video_frame{
+        width: 100%;
         border-radius: 5px;
     }
 
@@ -41,7 +46,7 @@
             justify-content: center;
 
             #channel_name {
-                font-size: 12px;
+                // font-size: 12px;
 
                 a {
                     color: #fff;
@@ -50,7 +55,7 @@
         }
 
         #channel_sub {
-            font-size: 10px;
+            font-size: 12px;
             color: #fff;
         }
     }
