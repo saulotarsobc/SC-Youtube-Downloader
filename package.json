@@ -32,7 +32,7 @@
   "repository": "https://github.com/saulotarsobc/youtube-downloader.git",
   "devDependencies": {
     "electron": "^23.1.2",
-    "electron-builder": "^23.6.0"
+    "electron-builder": "^24.0.0"
   },
   "dependencies": {
     "ytdl-core": "^4.11.2"

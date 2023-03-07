@@ -32,5 +32,3 @@ app.on("window-all-closed", function () {
     console.log("...app finalizado");
     if (process.platform !== "darwin") app.quit();
 });
-
-/* code */
