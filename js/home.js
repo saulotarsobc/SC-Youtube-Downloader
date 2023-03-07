@@ -82,13 +82,13 @@ async function baixar(index) {
         /* progresso */
 
         /* velocidade */
-        console.log(chunkLength, downloaded, total);
+        // console.log(chunkLength, downloaded, total);
         /* velocidade */
 
         /* exibir resultados */
         progresso.value = progress.toFixed(2);
         mensagem.innerHTML = `Baixando... - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`;
-        // console.log(`Baixando "${videoTitle}.${container}" - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`);
+        console.log(`Baixando "${videoTitle}.${container}" - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`);
         /* exibir resultados */
     });
 
@@ -97,7 +97,7 @@ async function baixar(index) {
         mensagem.innerHTML = "Download concluído";
     });
 
-    download.pipe(fs.createWriteStream(`${videoTitle}.${container}`));
+    download.pipe(fs.createWriteStream(`${videoTitle.replace(/[^\w\s]/gi, '')}.${container}`));
 };
 
 function clearAll() {
