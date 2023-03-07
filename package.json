@@ -1,6 +1,6 @@
 {
   "name": "youtube-downloader-sc",
-  "version": "v0.2.0-alpha",
+  "version": "v0.3.0-alpha",
   "description": "App feito com Electron para baixar videos individuais ou playlists do youtube em vários formatos",
   "icon": "./build/icon.png",
   "main": "./main.js",
