@@ -14,7 +14,7 @@ function createWindows() {
         autoHideMenuBar: true,
     });
     win.loadFile("./home.html");
-    win.setTitle("SC Youtube Downloader - v2.0.0");
+    win.setTitle("SC Youtube Downloader");
     // win.setTitle(`${require('./package.json').build.productName} - v${require('./package.json').version}`);
     // win.setPosition(50, 50);
     win.webContents.openDevTools();
