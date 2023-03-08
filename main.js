@@ -19,7 +19,7 @@ function createWindows() {
     win.setTitle("SC Youtube Downloader");
     // win.setTitle(`${require('./package.json').build.productName} - v${require('./package.json').version}`);
     // win.setPosition(50, 50);
-    win.maximize();
+    // win.maximize();
     win.webContents.openDevTools();
 }
 
@@ -50,8 +50,13 @@ ipcMain.on('baixar', (event, { info, formatoEscolido, videoTitle }) => {
 
         /* exibir resultados */
         // progresso.value = progress.toFixed(2);
-        // mensagem.innerHTML = `Baixando... - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`;
-        console.log(`Baixando "${videoTitle}.${container}" - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`);
+        // mensagem.innerHTML = `Baixando... ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`;
+        console.log(`"${videoTitle}.${container}" - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`);
+        win.webContents.send('show', {
+            valueOfProgresso: progress.toFixed(2),
+            textOfMessage: `Baixando... ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`,
+            textOfConsole: `${videoTitle}.${container}" - ${progress.toFixed(2)} % concluído(${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`
+        });
     });
     download.on('finish', () => {
         console.log(`Download do vídeo "${videoTitle}" concluído com sucesso!`);
@@ -61,13 +66,16 @@ ipcMain.on('baixar', (event, { info, formatoEscolido, videoTitle }) => {
     dialog.showSaveDialog(null, {
         title: 'Salvar arquivo',
         defaultPath: `${videoTitle.replace(/[^\w\s]/gi, '')}.${container}`,
+        // defaultPath: `${videoTitle.replace(/[^\w\s]/gi, '')}`,
         buttonLabel: 'Salvar',
         filters: [
             { name: 'Documentos', extensions: [container] },
             { name: 'Todos os arquivos', extensions: ['*'] }
         ]
     }).then(result => {
-        download.pipe(fs.createWriteStream(`${result.filePath}`));
+        console.log(result.filePath);
+        // download.pipe(fs.createWriteStream(`${result.filePath}${videoTitle}`));
+        download.pipe(fs.createWriteStream(result.filePath));
     }).catch(err => {
         console.log(err);
     });

@@ -71,13 +71,19 @@ async function renderFormts() {
     });
 };
 
-async function baixar(index) {
+function baixar(index) {
     ipcRenderer.send('baixar', {
         formatoEscolido: videoFormats[index],
         info,
         videoTitle
     });
 };
+
+ipcRenderer.on('show', (event, { valueOfProgresso, textOfMessage, textOfConsole }) => {
+    progresso.value = valueOfProgresso;
+    mensagem.innerHTML = textOfMessage;
+    console.log(textOfConsole);
+});
 
 function clearAll() {
     // thumb.src = "./image/nothing.png";
