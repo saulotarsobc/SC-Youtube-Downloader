@@ -1,6 +1,5 @@
 /* libs */
 const { ipcRenderer } = require('electron');
-// const fs = require('fs');
 const ytdl = require('ytdl-core');
 /* libs */
 
