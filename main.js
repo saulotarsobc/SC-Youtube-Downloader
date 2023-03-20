@@ -49,9 +49,10 @@ ipcMain.on('baixar', (event, { info, formatoEscolido, videoTitle }) => {
         /* velocidade */
 
         /* exibir resultados */
-        // progresso.value = progress.toFixed(2);
-        // mensagem.innerHTML = `Baixando... ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`;
-        console.log(`"${videoTitle}.${container}" - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`);
+        // console.log(`"${videoTitle}.${container}" - ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`);
+
+        win.setProgressBar((Number(progress.toFixed()) * 0.01));
+        console.log((Number(progress.toFixed()) * 0.01));
         win.webContents.send('show', {
             valueOfProgresso: progress.toFixed(2),
             textOfMessage: `Baixando... ${progress.toFixed(2)}% concluído (${downloadedMB.toFixed(2)} MB de ${totalMB.toFixed(2)} MB)`,
@@ -60,13 +61,11 @@ ipcMain.on('baixar', (event, { info, formatoEscolido, videoTitle }) => {
     });
     download.on('finish', () => {
         console.log(`Download do vídeo "${videoTitle}" concluído com sucesso!`);
-        // mensagem.innerHTML = "Download concluído";
     });
 
     dialog.showSaveDialog(null, {
         title: 'Salvar arquivo',
         defaultPath: `${videoTitle.replace(/[^\w\s]/gi, '')}.${container}`,
-        // defaultPath: `${videoTitle.replace(/[^\w\s]/gi, '')}`,
         buttonLabel: 'Salvar',
         filters: [
             { name: 'Documentos', extensions: [container] },
@@ -74,7 +73,6 @@ ipcMain.on('baixar', (event, { info, formatoEscolido, videoTitle }) => {
         ]
     }).then(result => {
         console.log(result.filePath);
-        // download.pipe(fs.createWriteStream(`${result.filePath}${videoTitle}`));
         download.pipe(fs.createWriteStream(result.filePath));
     }).catch(err => {
         console.log(err);
